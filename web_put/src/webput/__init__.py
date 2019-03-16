@@ -25,6 +25,9 @@ def create_app(test_config=None):
     jwt.user_loader_callback_loader(auth.user_loader_callback)
 
     app.add_url_rule("/auth/login", view_func=auth.login, methods=["POST"])
+    app.add_url_rule(
+        "/get", view_func=views.get_channels_status, methods=["GET"]
+    )
     app.add_url_rule("/put", view_func=views.put, methods=["POST"])
 
     return app
